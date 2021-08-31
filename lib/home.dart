@@ -1,3 +1,4 @@
+import 'package:ecomerce/widgets/drawer.dart';
 import 'package:flutter/material.dart';
 
 
@@ -6,14 +7,20 @@ class Home extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Material(
-      child: Column(
-        children: [
-          SizedBox(height: 50.0,),
-          Text("WELCOME",style: TextStyle(color: Colors.red,fontWeight: FontWeight.bold,
-              fontSize: 22),),
-        ],
+    return Scaffold(
+      appBar: AppBar(title: Text("Design App"),
       ),
+      body: Center(
+        child: Container(
+          child: (Text('Welcome to Home Page')
+          ),
+        ),
+
+      ),
+      drawer: MyDrawer(),
+
+
     );
+
   }
 }

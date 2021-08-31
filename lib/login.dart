@@ -14,6 +14,7 @@ class _LoginState extends State<Login> {
   String name="";
   bool changeButton=false;
   final _formKey = GlobalKey<FormState>();
+  //form if validation true run this code other wise run 1=>
   moveToHome(BuildContext context) async{
     if(_formKey.currentState!.validate()) {
       setState(() {
@@ -47,6 +48,7 @@ class _LoginState extends State<Login> {
               decoration: InputDecoration(
                 hintText: "Username",labelText: "Enter Username",
             ),
+              //=>1 run this code
               validator: (value){
               if(value!.isEmpty){
                 return "Please Enter Your Email";
