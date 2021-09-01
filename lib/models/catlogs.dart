@@ -14,8 +14,8 @@ class Items{
 
 final Product=[Items(
     id: "Check code2",
-  name:"IPhone Pro max",
-  desc: "Mobile Phone of Apple Company",
+    name:"IPhone Pro max",
+    desc: "Mobile Phone of Apple Company",
     imageUrl: 'Image.png',
     color: "#356eee",
     price: 22
