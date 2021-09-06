@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 
 class ItemsWidget extends StatelessWidget {
   final Items items;
+  //item require and must be assign from model
   const ItemsWidget({Key? key, required this.items})
       :assert(items!=null),
         super(key: key);

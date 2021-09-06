@@ -13,6 +13,7 @@ class Login extends StatefulWidget {
 class _LoginState extends State<Login> {
   String name="";
   bool changeButton=false;
+  bool _secureText=false;
   final _formKey = GlobalKey<FormState>();
   //form if validation true run this code other wise run 1=>
   moveToHome(BuildContext context) async{
@@ -42,75 +43,89 @@ class _LoginState extends State<Login> {
           Padding(padding: const EdgeInsets.symmetric(vertical: 16.0,horizontal: 32.0),
           child: Form(
             key: _formKey,
-            child: Column
-              (children: [
-            TextFormField(
-              decoration: InputDecoration(
-                hintText: "Username",labelText: "Enter Username",
-            ),
-              //=>1 run this code
-              validator: (value){
-              if(value!.isEmpty){
-                return "Please Enter Your Email";
-
-              }
-              else null;
-              },
-              onChanged: (value){
-              name=value;
-              setState(() {
-
-              });
-              },
-            ),
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Column
+                (children: [
               TextFormField(
-                obscureText:true,
                 decoration: InputDecoration(
-                    hintText: "Password",labelText: "Enter Password"),
+                  hintText: "Enter Username",labelText: "Username",labelStyle: TextStyle(fontSize: 20,color: Colors.black),
+                  border: OutlineInputBorder()
+              ),
+                //=>1 run this code
                 validator: (value){
-                  if(value!.isEmpty){
-                    return "Please Enter Password";
+                if(value!.isEmpty){
+                  return "Please Enter Your Email";
 
-                  }
-                  else if(value.length<6){
-                    return "Password Should be 6";
-                  }
-                  else null;
+                }
+                else null;
+                },
+                onChanged: (value){
+                name=value;
+                setState(() {
+
+                });
                 },
               ),
+                SizedBox(height: 16.0,),
+                TextFormField(
+                  obscureText:_secureText,
+                  decoration: InputDecoration(
+                      hintText: "Enter Password",labelText: "Password",
+                      labelStyle: TextStyle(fontSize: 20,color: Colors.black),
+                  border: OutlineInputBorder(),
+                    suffix: IconButton(icon: Icon(_secureText?Icons.remove_red_eye:Icons.security),onPressed: () {
+                      setState(() {
+                        _secureText=!_secureText;
+                      });
+                    },)
 
-              SizedBox(height: 16.0,),
-              //inkwell wrap with widget material
-              Material(
-                color: Colors.red,
-                  borderRadius: BorderRadius.circular(changeButton?50:8),
-                child: InkWell(
-                  onTap: () =>moveToHome(context),
-                    // child: AnimatedContainer
-                  child: Ink(
-                    // duration: Duration(seconds: 2),
-                    height: 40,
-                    width: changeButton?100:150,
-                    // color: Colors.red,
-                    // alignment: Alignment.center,
-                    child: changeButton?Icon(Icons.done,color: Colors.white,):Text("Login",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 18,color: Colors.white),
-                    ),
-                    decoration: BoxDecoration(
-                      color: Colors.red,
-                      // shape: changeButton?BoxShape.circle:BoxShape.rectangle,
-                      // borderRadius: BorderRadius.circular(changeButton?50:8)
+                  ),
+                  validator: (value){
+                    if(value!.isEmpty){
+                      return "Please Enter Password";
+
+                    }
+                    else if(value.length<6){
+                      return "Password Should be 6";
+                    }
+                    else null;
+                  },
+                ),
+
+                SizedBox(height: 16.0,),
+                //inkwell wrap with widget material
+                Material(
+                  color: Colors.red,
+                    borderRadius: BorderRadius.circular(changeButton?50:8),
+                  child: InkWell(
+                    onTap: () =>moveToHome(context),
+                      // child: AnimatedContainer
+                    child: Ink(
+                      // duration: Duration(seconds: 2),
+                      height: 40,
+                      width: changeButton?100:150,
+                      // color: Colors.red,
+                      // alignment: Alignment.center,
+                      child: changeButton?Icon(Icons.done,color: Colors.white,):Text("Login",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 18,color: Colors.white),
+                      ),
+                      decoration: BoxDecoration(
+                        color: Colors.red,
+                        // shape: changeButton?BoxShape.circle:BoxShape.rectangle,
+                        // borderRadius: BorderRadius.circular(changeButton?50:8)
+                      ),
                     ),
                   ),
                 ),
-              ),
-              // ElevatedButton(child: Text("Login"),
-              //     style: TextButton.styleFrom(minimumSize: Size(150,40)),
-              //     onPressed: (){
-              //   print("Login Clicked");
-              // },
-              // ),
-            ]
+                // ElevatedButton(child: Text("Login"),
+                //     style: TextButton.styleFrom(minimumSize: Size(150,40)),
+                //     onPressed: (){
+                //   print("Login Clicked");
+                // },
+                // ),
+              ]
 
+              ),
             ),
           ),
 
