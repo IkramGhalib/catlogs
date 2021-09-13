@@ -22,7 +22,9 @@ class _LoginState extends State<Login> {
         changeButton = true;
       });
       await Future.delayed(Duration(seconds: 2));
+      // await Navigator.pushNamed(context, MyRoutes.homeRoutes);
       await Navigator.pushNamed(context, MyRoutes.homeRoutes);
+
       setState(() {
         changeButton = false;
       });
