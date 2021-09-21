@@ -31,11 +31,14 @@ class MyDrawer extends StatelessWidget {
             ),
             //Left icon and title
             ListTile(
+              // onTap: (){print("clicke drawer");},
+              // trailing: icon,
               leading:
               Icon(
 
                 CupertinoIcons.profile_circled,color: Colors.white,),
               title: Text("Profile",textScaleFactor: 1.5,style: TextStyle(color: Colors.white),),
+              subtitle: Text("Hello"),
             ),
             ListTile(
               leading:
